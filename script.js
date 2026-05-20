@@ -31,6 +31,22 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    const heroMenuBtn = document.getElementById('hero-menu-btn');
+    if (heroMenuBtn) {
+        heroMenuBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            openMenu();
+        });
+    }
+
+    const footerMenuLink = document.getElementById('footer-menu-link');
+    if (footerMenuLink) {
+        footerMenuLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            openMenu();
+        });
+    }
+
     if (mobileToggle) {
         mobileToggle.addEventListener('click', () => {
             openMenu();
@@ -54,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ---- Product Tabs ----
     const productTabs = document.querySelectorAll('.product-tab');
-    
+
     productTabs.forEach(tab => {
         tab.addEventListener('click', () => {
             productTabs.forEach(t => t.classList.remove('active'));
@@ -62,113 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // ---- Products Carousel (Premium Implementation) ----
-    const carousel = document.getElementById('products-carousel');
-    const arrowRight = document.getElementById('carousel-arrow-right');
-    const arrowLeft = document.getElementById('carousel-arrow-left');
-    const progressBar = document.getElementById('products-progress-bar');
-
-    if (carousel) {
-        let isDown = false;
-        let startX;
-        let scrollLeft;
-
-        // Update Progress Bar & Arrow States
-        const updateCarouselState = () => {
-            if (!carousel) return;
-            
-            // Progress Bar
-            const maxScroll = carousel.scrollWidth - carousel.clientWidth;
-            const progress = (carousel.scrollLeft / maxScroll) * 100;
-            if (progressBar) progressBar.style.width = `${progress}%`;
-
-            // Arrow States
-            if (arrowLeft) {
-                arrowLeft.disabled = carousel.scrollLeft <= 5;
-                arrowLeft.style.opacity = arrowLeft.disabled ? '0.3' : '1';
-                arrowLeft.style.pointerEvents = arrowLeft.disabled ? 'none' : 'auto';
-            }
-            if (arrowRight) {
-                arrowRight.disabled = carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth - 5;
-                arrowRight.style.opacity = arrowRight.disabled ? '0.3' : '1';
-                arrowRight.style.pointerEvents = arrowRight.disabled ? 'none' : 'auto';
-            }
-        };
-
-        // Scroll Events
-        carousel.addEventListener('scroll', updateCarouselState);
-        window.addEventListener('resize', updateCarouselState);
-        
-        // Initial state
-        setTimeout(updateCarouselState, 100);
-
-        // Click to Scroll
-        const scrollAmount = 400;
-        if (arrowRight) {
-            arrowRight.addEventListener('click', () => {
-                carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-            });
-        }
-        if (arrowLeft) {
-            arrowLeft.addEventListener('click', () => {
-                carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-            });
-        }
-
-        // Drag to Scroll
-        carousel.addEventListener('mousedown', (e) => {
-            isDown = true;
-            carousel.classList.add('active');
-            startX = e.pageX - carousel.offsetLeft;
-            scrollLeft = carousel.scrollLeft;
-        });
-
-        carousel.addEventListener('mouseleave', () => {
-            isDown = false;
-            carousel.classList.remove('active');
-        });
-
-        carousel.addEventListener('mouseup', () => {
-            isDown = false;
-            carousel.classList.remove('active');
-        });
-
-        carousel.addEventListener('mousemove', (e) => {
-            if (!isDown) return;
-            e.preventDefault();
-            const x = e.pageX - carousel.offsetLeft;
-            const walk = (x - startX) * 2; // Scroll speed multiplier
-            carousel.scrollLeft = scrollLeft - walk;
-        });
-
-        // Touch support
-        carousel.addEventListener('touchstart', (e) => {
-            startX = e.touches[0].pageX - carousel.offsetLeft;
-            scrollLeft = carousel.scrollLeft;
-        }, { passive: true });
-
-        // Dynamic Skew Effect on Scroll
-        let lastPos = carousel.scrollLeft;
-        let skewVelocity = 0;
-        
-        const skewEffect = () => {
-            const newPos = carousel.scrollLeft;
-            const diff = newPos - lastPos;
-            skewVelocity = diff * 0.15; // Intensity
-            lastPos = newPos;
-
-            const cards = carousel.querySelectorAll('.product-card');
-            cards.forEach(card => {
-                // Apply skew and a slight scale based on velocity
-                card.style.transform = `rotate(${-1 + skewVelocity * 0.1}deg) skewX(${skewVelocity * 0.5}deg)`;
-            });
-
-            requestAnimationFrame(skewEffect);
-        };
-        
-        // Start the effect loop
-        requestAnimationFrame(skewEffect);
-    }
+    // Carousel logic removed due to new grid layout.
 
     // ---- Explore Location Arrows ----
     const explorePrev = document.getElementById('explore-prev');
@@ -176,10 +86,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const locations = [
         {
             city: 'New Delhi',
-            email: 'feellaban@gmail.com',
+            email: 'baladiallaban@gmail.com',
             phone: '+91 77366 60688',
             hours: 'Open 2:00 PM - 1:00 AM',
-            address: 'Shop no. 78, Municipal Market, Connaught Cir, Connaught Lane, Connaught Place, New Delhi, Delhi 110001'
+            address: 'https://maps.app.goo.gl/UKtrvr4XetQJqkXNA'
         }
     ];
     let currentLocation = 0;
@@ -190,11 +100,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const emailEl = document.querySelector('.store-email');
         const phoneEl = document.querySelector('.store-phone');
         const hoursEl = document.querySelector('.store-hours');
-        
+        const addressEl = document.querySelector('.store-address');
+
         if (cityEl) cityEl.textContent = loc.city;
         if (emailEl) emailEl.textContent = loc.email;
         if (phoneEl) phoneEl.textContent = loc.phone;
         if (hoursEl) hoursEl.textContent = loc.hours;
+        if (addressEl) addressEl.href = loc.address;
     }
 
     if (explorePrev) {
@@ -229,13 +141,13 @@ document.addEventListener('DOMContentLoaded', () => {
         anchor.addEventListener('click', function (e) {
             const targetId = this.getAttribute('href');
             if (targetId === '#') return;
-            
+
             const target = document.querySelector(targetId);
             if (target) {
                 e.preventDefault();
                 const navHeight = document.querySelector('.navbar')?.offsetHeight || 70;
                 const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
-                
+
                 window.scrollTo({
                     top: targetPosition,
                     behavior: 'smooth'
@@ -247,10 +159,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // ---- Navbar Scroll Effect ----
     let lastScrollY = 0;
     const navbar = document.getElementById('navbar');
-    
+
     window.addEventListener('scroll', () => {
         const currentScrollY = window.scrollY;
-        
+
         if (navbar) {
             if (currentScrollY > 100) {
                 navbar.style.boxShadow = '0 1px 3px rgba(0,0,0,0.06)';
@@ -258,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 navbar.style.boxShadow = 'none';
             }
         }
-        
+
         lastScrollY = currentScrollY;
     });
 
@@ -278,7 +190,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, observerOptions);
 
     const revealElements = document.querySelectorAll('.hero-title, .hero-subtitle, .hero-actions, .hero-floating-image, .hero-image-blob, .product-card, .section-heading, .visit-content, .about-content, .franchise-content');
-    
+
     revealElements.forEach((el, index) => {
         el.classList.add('reveal-init');
         revealObserver.observe(el);

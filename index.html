@@ -1,15 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Baladi Laban</title>
-    <meta name="description" content="Baladi Laban - Tradition in every bite, sweetness in every feel. Indulge in the creamiest laban-based desserts.">
-    <link rel="stylesheet" href="./styles.css">
+    <meta name="description"
+        content="Baladi Laban - Tradition in every bite, sweetness in every feel. Indulge in the creamiest laban-based desserts.">
+    <script>
+        window.solveSimpleChallenge = window.solveSimpleChallenge || function () {
+            return true;
+        };
+    </script>
+    <link rel="stylesheet" href="./styles.css?v=20260521-4">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
@@ -21,7 +31,10 @@
         <div class="nav-right">
             <a href="#locations" class="nav-link">Locations</a>
             <a href="#contact" class="nav-btn-contact">
-                Contact <span class="btn-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                Contact <span class="btn-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg></span>
             </a>
             <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle menu">
                 <span class="bar"></span>
@@ -32,178 +45,233 @@
 
     <!-- Full-Screen Menu Overlay -->
     <div class="menu-overlay" id="menu-overlay">
-        <!-- Wavy background decoration -->
-        <svg class="menu-wave menu-wave-top" viewBox="0 0 1440 80" preserveAspectRatio="none">
-            <path d="M0,40 C360,80 720,0 1080,40 C1260,60 1380,20 1440,40 L1440,0 L0,0 Z" fill="rgba(255,255,255,0.06)"/>
-        </svg>
-        <svg class="menu-wave menu-wave-bottom" viewBox="0 0 1440 80" preserveAspectRatio="none">
-            <path d="M0,40 C360,0 720,80 1080,40 C1260,20 1380,60 1440,40 L1440,80 L0,80 Z" fill="rgba(255,255,255,0.06)"/>
-        </svg>
-
         <!-- Close button -->
         <button class="menu-overlay-close" id="menu-overlay-close" aria-label="Close menu">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-                <path d="M18 6L6 18M6 6l12 12"/>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round">
+                <path d="M18 6L6 18M6 6l12 12" />
             </svg>
         </button>
 
-        <!-- Menu Logo -->
-        <div class="menu-overlay-logo">
-            <svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg">
-                <rect x="10" y="10" width="180" height="140" rx="30" ry="30" fill="none" stroke="white" stroke-width="3"/>
-                <text x="100" y="90" text-anchor="middle" font-family="'Playfair Display', serif" font-size="28" font-weight="700" fill="white" font-style="italic">Baladi Laban</text>
-                <text x="100" y="125" text-anchor="middle" font-family="'Playfair Display', serif" font-size="16" font-style="italic" fill="white">Original Taste</text>
-            </svg>
-        </div>
-
-        <!-- Menu Grid -->
-        <div class="menu-overlay-grid">
-            <!-- Category: Koshari -->
-            <div class="menu-category">
-                <div class="menu-category-header">
-                    <h3 class="menu-category-title">KOSHARI</h3>
-                    <span class="menu-category-price-line"></span>
-                    <span class="menu-category-price">350</span>
+        <div class="menu-overlay-container">
+            <!-- Menu Header / Brand Logo & Decorations -->
+            <div class="menu-header">
+                <div class="menu-decor-left">
+                    <svg class="decor-bowl" viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10,20 Q50,0 90,20 L80,60 Q50,75 20,60 Z" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+                        <path d="M20,60 Q50,70 80,60" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+                        <text x="50" y="45" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.3)" font-family="var(--font-heading)">Baladi Laban</text>
+                    </svg>
                 </div>
-                <div class="menu-category-items">
-                    <span class="menu-item">Trio</span>
-                    <span class="menu-item">Pistachio Lotus</span>
-                    <span class="menu-item">Kinder Nutella</span>
-                    <span class="menu-item">Pistachio Nutella</span>
+                <div class="menu-logo-wrapper">
+                    <svg class="menu-brand-logo" viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="10" y="10" width="180" height="140" rx="35" ry="35" fill="none" stroke="white" stroke-width="3.5" />
+                        <text x="100" y="65" text-anchor="middle" font-family="var(--font-accent)" font-size="28" font-weight="900" fill="white" font-style="italic">Baladi</text>
+                        <text x="100" y="100" text-anchor="middle" font-family="var(--font-accent)" font-size="28" font-weight="900" fill="white" font-style="italic">Laban</text>
+                        <text x="100" y="130" text-anchor="middle" font-family="var(--font-heading)" font-size="11" font-weight="700" fill="white" letter-spacing="2">ORIGINAL TASTE</text>
+                    </svg>
                 </div>
-            </div>
-
-            <!-- Category: Salankatiya -->
-            <div class="menu-category">
-                <div class="menu-category-header">
-                    <h3 class="menu-category-title">SALANKATIYA</h3>
-                    <span class="menu-category-price-line"></span>
-                    <span class="menu-category-price">350</span>
-                </div>
-                <div class="menu-category-items">
-                    <span class="menu-item">Pistachio Nutella</span>
-                    <span class="menu-item">Pistachio Lotus</span>
-                    <span class="menu-item">Trio</span>
+                <div class="menu-decor-right">
+                    <svg class="decor-bowl" viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10,20 Q50,0 90,20 L80,60 Q50,75 20,60 Z" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+                        <path d="M20,60 Q50,70 80,60" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+                        <text x="50" y="45" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.3)" font-family="var(--font-heading)">Baladi Laban</text>
+                    </svg>
                 </div>
             </div>
 
-            <!-- Category: Louah -->
-            <div class="menu-category">
-                <div class="menu-category-header">
-                    <h3 class="menu-category-title">LOUAH</h3>
-                    <span class="menu-category-price-line"></span>
-                    <span class="menu-category-price">350</span>
-                </div>
-                <div class="menu-category-items">
-                    <span class="menu-item">Nutella Pistachio Kinder</span>
-                    <span class="menu-item">Chocolate Kinder</span>
-                </div>
-            </div>
-
-            <!-- Category: Qashtutah -->
-            <div class="menu-category">
-                <div class="menu-category-header">
-                    <h3 class="menu-category-title">QASHTUTAH</h3>
-                    <span class="menu-category-price-line"></span>
-                    <span class="menu-category-price">290</span>
-                </div>
-                <div class="menu-category-items">
-                    <span class="menu-item">Mango</span>
-                    <span class="menu-item">Pistachio Nutella</span>
-                </div>
-            </div>
-
-            <!-- Specialty Items -->
-            <div class="menu-category menu-category-specials">
-                <div class="menu-category-header">
-                    <h3 class="menu-category-title">SPECIALS</h3>
-                </div>
-                <div class="menu-category-items menu-specials-grid">
-                    <div class="menu-special-item">
-                        <span class="menu-item">Kabsa</span>
-                        <span class="menu-special-price">380</span>
+            <!-- KOSHARI SECTION -->
+            <div class="menu-section koshari-section">
+                <h2 class="menu-section-title">KOSHARI</h2>
+                <div class="menu-grid">
+                    <!-- Koshari Item 1 -->
+                    <div class="menu-card">
+                        <div class="menu-card-image-wrapper">
+                            <img src="./images/menu_trans/koshari_pistachio_lotus.png" alt="Pistachio Lotus Koshari">
+                        </div>
+                        <h3 class="menu-card-name">Pistachio lotus</h3>
+                        <div class="menu-card-prices">
+                            <div class="price-pill"><span class="price-type">Regular</span><span class="price-amount">₹469</span></div>
+                            <div class="price-pill"><span class="price-type">Mini</span><span class="price-amount">₹269</span></div>
+                        </div>
                     </div>
-                    <div class="menu-special-item">
-                        <span class="menu-item">Creme De La Creme</span>
-                        <span class="menu-special-price">380</span>
+                    <!-- Koshari Item 2 -->
+                    <div class="menu-card">
+                        <div class="menu-card-image-wrapper">
+                            <img src="./images/menu_trans/koshari_kinder_nutella.png" alt="Kinder Nutella Koshari">
+                        </div>
+                        <h3 class="menu-card-name">Kinder Nutella</h3>
+                        <div class="menu-card-prices">
+                            <div class="price-pill"><span class="price-type">Regular</span><span class="price-amount">₹469</span></div>
+                            <div class="price-pill"><span class="price-type">Mini</span><span class="price-amount">₹269</span></div>
+                        </div>
                     </div>
-                    <div class="menu-special-item">
-                        <span class="menu-item">Lazy Cat</span>
-                        <span class="menu-special-price">250</span>
+                    <!-- Koshari Item 3 -->
+                    <div class="menu-card">
+                        <div class="menu-card-image-wrapper">
+                            <img src="./images/menu_trans/koshari_pistachio_nutella.png" alt="Pistachio Nutella Koshari">
+                        </div>
+                        <h3 class="menu-card-name">Pistachio Nutella</h3>
+                        <div class="menu-card-prices">
+                            <div class="price-pill"><span class="price-type">Regular</span><span class="price-amount">₹469</span></div>
+                            <div class="price-pill"><span class="price-type">Mini</span><span class="price-amount">₹269</span></div>
+                        </div>
                     </div>
-                    <div class="menu-special-item">
-                        <span class="menu-item">Cheese Bomb</span>
-                        <span class="menu-special-price">290</span>
-                    </div>
-                    <div class="menu-special-item">
-                        <span class="menu-item">Hebba Cake</span>
-                        <span class="menu-special-price">350</span>
-                    </div>
-                    <div class="menu-special-item">
-                        <span class="menu-item">Al Mazia</span>
-                        <span class="menu-special-price">250</span>
+                    <!-- Koshari Item 4 -->
+                    <div class="menu-card">
+                        <div class="menu-card-image-wrapper">
+                            <img src="./images/menu_trans/koshari_grand_trio.png" alt="Grand Trio Koshari">
+                        </div>
+                        <h3 class="menu-card-name">Grand Trio Koshari</h3>
+                        <div class="menu-card-prices">
+                            <div class="price-pill"><span class="price-type">Regular</span><span class="price-amount">₹469</span></div>
+                            <div class="price-pill"><span class="price-type">Mini</span><span class="price-amount">₹269</span></div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Category: Shakes -->
-            <div class="menu-category">
-                <div class="menu-category-header">
-                    <h3 class="menu-category-title">SHAKES</h3>
-                    <span class="menu-category-price-line"></span>
-                    <span class="menu-category-price">150</span>
-                </div>
-                <div class="menu-category-items">
-                    <span class="menu-item">Nutella</span>
-                    <span class="menu-item">Pistachio</span>
-                    <span class="menu-item">Lotus</span>
+            <!-- SALANKATIA SECTION (White block container) -->
+            <div class="menu-section salankatia-section-container">
+                <div class="salankatia-white-block">
+                    <h2 class="menu-section-title salankatia-title">SALANKATIA</h2>
+                    <div class="menu-grid">
+                        <!-- Salankatia Item 1 -->
+                        <div class="menu-card salankatia-card">
+                            <div class="menu-card-image-wrapper">
+                                <img src="./images/menu_trans/salankatia_pistachio_lotus.png" alt="Pistachio Lotus Salankatia">
+                            </div>
+                            <h3 class="menu-card-name">Pistachio lotus</h3>
+                            <div class="menu-card-prices">
+                                <div class="price-pill dark-pill"><span class="price-type">Regular</span><span class="price-amount">₹459</span></div>
+                                <div class="price-pill dark-pill"><span class="price-type">Mini</span><span class="price-amount">₹259</span></div>
+                            </div>
+                        </div>
+                        <!-- Salankatia Item 2 -->
+                        <div class="menu-card salankatia-card">
+                            <div class="menu-card-image-wrapper">
+                                <img src="./images/menu_trans/salankatia_pistachio_nutella.png" alt="Pistachio Nutella Salankatia">
+                            </div>
+                            <h3 class="menu-card-name">Pistachio Nutella</h3>
+                            <div class="menu-card-prices">
+                                <div class="price-pill dark-pill"><span class="price-type">Regular</span><span class="price-amount">₹459</span></div>
+                                <div class="price-pill dark-pill"><span class="price-type">Mini</span><span class="price-amount">₹259</span></div>
+                            </div>
+                        </div>
+                        <!-- Salankatia Item 3 -->
+                        <div class="menu-card salankatia-card">
+                            <div class="menu-card-image-wrapper">
+                                <img src="./images/menu_trans/salankatia_grand_trio.png" alt="Grand Trio Salankatia">
+                            </div>
+                            <h3 class="menu-card-name">Grand Trio Salankatia</h3>
+                            <div class="menu-card-prices">
+                                <div class="price-pill dark-pill"><span class="price-type">Regular</span><span class="price-amount">₹459</span></div>
+                                <div class="price-pill dark-pill"><span class="price-type">Mini</span><span class="price-amount">₹259</span></div>
+                            </div>
+                        </div>
+                        <!-- Salankatia Item 4 -->
+                        <div class="menu-card salankatia-card">
+                            <div class="menu-card-image-wrapper">
+                                <img src="./images/menu_trans/salankatia_mango.png" alt="Mango Salankatia">
+                            </div>
+                            <h3 class="menu-card-name">Mango</h3>
+                            <div class="menu-card-prices">
+                                <div class="price-pill dark-pill"><span class="price-type">Regular</span><span class="price-amount">₹469</span></div>
+                                <div class="price-pill dark-pill"><span class="price-type">Mini</span><span class="price-amount">₹299</span></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Hot Chocolate -->
-            <div class="menu-category">
-                <div class="menu-category-header">
-                    <h3 class="menu-category-title">HOT CHOCOLATE</h3>
-                    <span class="menu-category-price-line"></span>
-                    <span class="menu-category-price">129</span>
-                </div>
-                <div class="menu-category-items">
-                    <span class="menu-item">250ml</span>
+            <!-- QASHTUTA SECTION -->
+            <div class="menu-section qashtuta-section">
+                <h2 class="menu-section-title">QASHTUTA</h2>
+                <div class="menu-grid">
+                    <!-- Qashtuta Item 1 -->
+                    <div class="menu-card">
+                        <div class="menu-card-image-wrapper">
+                            <img src="./images/menu_trans/qashtuta_mango.png" alt="Mango Qashtuta">
+                        </div>
+                        <h3 class="menu-card-name">Mango</h3>
+                        <div class="menu-card-prices">
+                            <div class="price-pill"><span class="price-type">Regular</span><span class="price-amount">₹469</span></div>
+                            <div class="price-pill"><span class="price-type">Mini</span><span class="price-amount">₹299</span></div>
+                        </div>
+                    </div>
+                    <!-- Qashtuta Item 2 -->
+                    <div class="menu-card">
+                        <div class="menu-card-image-wrapper">
+                            <img src="./images/menu_trans/qashtuta_kinder_nutella.png" alt="Kinder Nutella Qashtuta">
+                        </div>
+                        <h3 class="menu-card-name">Kinder Nutella</h3>
+                        <div class="menu-card-prices">
+                            <div class="price-pill"><span class="price-type">Regular</span><span class="price-amount">₹459</span></div>
+                            <div class="price-pill"><span class="price-type">Mini</span><span class="price-amount">₹259</span></div>
+                        </div>
+                    </div>
+                    <!-- Qashtuta Item 3 -->
+                    <div class="menu-card">
+                        <div class="menu-card-image-wrapper">
+                            <img src="./images/menu_trans/qashtuta_pistachio_nutella.png" alt="Pistachio Nutella Qashtuta">
+                        </div>
+                        <h3 class="menu-card-name">Pistachio Nutella</h3>
+                        <div class="menu-card-prices">
+                            <div class="price-pill"><span class="price-type">Regular</span><span class="price-amount">₹459</span></div>
+                            <div class="price-pill"><span class="price-type">Mini</span><span class="price-amount">₹259</span></div>
+                        </div>
+                    </div>
+                    <!-- Qashtuta Item 4 -->
+                    <div class="menu-card">
+                        <div class="menu-card-image-wrapper">
+                            <img src="./images/menu_trans/qashtuta_banana_strawberry.png" alt="Banana Strawberry Qashtuta">
+                        </div>
+                        <h3 class="menu-card-name">Banana Strawberry</h3>
+                        <div class="menu-card-prices">
+                            <div class="price-pill"><span class="price-type">Regular</span><span class="price-amount">₹469</span></div>
+                            <div class="price-pill"><span class="price-type">Mini</span><span class="price-amount">₹299</span></div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Navigation links at the bottom -->
-        <div class="menu-overlay-nav">
-            <a href="#about" class="menu-nav-link" data-menu-close>About</a>
-            <a href="#locations" class="menu-nav-link" data-menu-close>Locations</a>
-            <a href="#franchise" class="menu-nav-link" data-menu-close>Franchise</a>
-            <a href="#contact" class="menu-nav-link" data-menu-close>Contact</a>
+            <!-- Navigation Links -->
+            <div class="menu-overlay-nav">
+                <a href="#about" class="menu-nav-link" data-menu-close>About</a>
+                <a href="#locations" class="menu-nav-link" data-menu-close>Locations</a>
+                <a href="#franchise" class="menu-nav-link" data-menu-close>Franchise</a>
+                <a href="#contact" class="menu-nav-link" data-menu-close>Contact</a>
+            </div>
         </div>
     </div>
 
     <!-- Hero Section -->
     <section class="hero" id="hero">
+        <img src="./images/hero-dessert.png" alt="Baladi Laban signature laban dessert" class="hero-background-image">
+        <div class="hero-background-wash"></div>
         <div class="hero-container">
             <div class="hero-text-side">
-                <h1 class="hero-title">Experience <br>The <span class="text-italic">Original</span> Taste.</h1>
-                <p class="hero-subtitle">Authentic Egyptian desserts crafted with premium Baladi milk. Tradition in every bite, sweetness in every feel.</p>
+                <p class="hero-kicker">Baladi Laban</p>
+                <h1 class="hero-title">The <span class="text-italic">Original</span> Egyptian Dessert.</h1>
+                <p class="hero-subtitle">Authentic Egyptian desserts crafted with premium Baladi milk. Tradition in
+                    every bite, sweetness in every feel.</p>
                 <div class="hero-actions">
-                    <a href="#products" class="nav-btn-contact">
-                        View Menu <span class="btn-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                    <a href="#" class="nav-btn-contact" id="hero-menu-btn">
+                        View Menu <span class="btn-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14M12 5l7 7-7 7" />
+                            </svg></span>
                     </a>
                     <a href="#locations" class="outline-btn">Find a Store</a>
                 </div>
-            </div>
-            <div class="hero-image-side">
-                <div class="hero-image-blob"></div>
-                <img src="./images/hero-dessert.png" alt="Baladi Laban signature laban dessert" class="hero-floating-image">
             </div>
         </div>
         <!-- Wavy Divider -->
         <div class="wavy-divider">
             <svg viewBox="0 0 1440 120" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,120L1360,120C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120L0,120Z" fill="#E1EEFF"></path>
+                <path
+                    d="M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,120L1360,120C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120L0,120Z"
+                    fill="#E1EEFF"></path>
             </svg>
         </div>
     </section>
@@ -215,69 +283,58 @@
                 <h2 class="section-heading">Our Sweetest Creations</h2>
                 <p class="section-subheading">Indulge in our most loved dairy-based delights.</p>
             </div>
-        <div class="products-tabs" id="products-tabs">
-            <button class="product-tab" data-tab="shakes" id="tab-shakes">Shakes</button>
-            <button class="product-tab active" data-tab="new-arrivals" id="tab-new-arrivals">New Arrivals</button>
-            <button class="product-tab" data-tab="bestsellers" id="tab-bestsellers">Bestsellers</button>
-        </div>
-        <div class="products-carousel-wrapper">
-            <button class="carousel-arrow arrow-left" id="carousel-arrow-left" aria-label="Previous products">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                    <path d="M19 12H5M12 19l-7-7 7-7"/>
-                </svg>
-            </button>
-            <div class="products-carousel" id="products-carousel">
-                <div class="product-card" id="product-card-1">
-                    <div class="product-image-wrapper">
-                        <img src="./images/product-1.png" alt="Le Feel De Paris" class="product-image">
-                    </div>
-                    <h3 class="product-name">Le Feel De Paris</h3>
-                    <span class="product-tag">Cake</span>
-                </div>
-                <div class="product-card" id="product-card-2">
-                    <div class="product-image-wrapper">
-                        <img src="./images/product-2.png" alt="Fazea Chocola Cake" class="product-image">
-                    </div>
-                    <h3 class="product-name">Fazea Chocola Cake</h3>
-                    <span class="product-tag">Cake</span>
-                </div>
-                <div class="product-card" id="product-card-3">
-                    <div class="product-image-wrapper">
-                        <img src="./images/product-1.png" alt="Belgium Hebba Cake" class="product-image">
-                    </div>
-                    <h3 class="product-name">Belgium Hebba Cake</h3>
-                    <span class="product-tag">Cake</span>
-                </div>
-                <div class="product-card" id="product-card-4">
-                    <div class="product-image-wrapper">
-                        <img src="./images/product-2.png" alt="Choco Hebba Cake" class="product-image">
-                    </div>
-                    <h3 class="product-name">Choco Hebba Cake</h3>
-                    <span class="product-tag">Cake</span>
-                </div>
-                <div class="product-card" id="product-card-5">
-                    <div class="product-image-wrapper">
-                        <img src="./images/product-1.png" alt="Kinder Hebba Cake" class="product-image">
-                    </div>
-                    <h3 class="product-name">Kinder Hebba Cake</h3>
-                    <span class="product-tag">Cake</span>
-                </div>
-                <div class="product-card" id="product-card-6">
-                    <div class="product-image-wrapper">
-                        <img src="./images/product-2.png" alt="Lotus Laban Cup" class="product-image">
-                    </div>
-                    <h3 class="product-name">Lotus Laban Cup</h3>
-                    <span class="product-tag">Cup</span>
-                </div>
+            <div class="products-tabs" id="products-tabs">
+                <button class="product-tab active" data-tab="food" id="tab-food">Food</button>
             </div>
-            <button class="carousel-arrow arrow-right" id="carousel-arrow-right" aria-label="Next products">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
-            </button>
-            <div class="products-progress-container">
-                <div class="products-progress-track">
-                    <div class="products-progress-bar" id="products-progress-bar"></div>
+            <div class="products-grid" id="products-grid">
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="./foods/Banana_strawberry.jpeg" alt="Banana Strawberry" class="product-image">
+                    </div>
+                    <h3 class="product-name">Banana Strawberry</h3>
+                    <span class="product-tag">Food</span>
+                </div>
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="./foods/Kinder_Nuttela.jpeg" alt="Kinder Nutella" class="product-image">
+                    </div>
+                    <h3 class="product-name">Kinder Nutella</h3>
+                    <span class="product-tag">Food</span>
+                </div>
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="./foods/Mango.jpeg" alt="Mango" class="product-image">
+                    </div>
+                    <h3 class="product-name">Mango</h3>
+                    <span class="product-tag">Food</span>
+                </div>
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="./foods/WhatsApp Image 2026-05-21 at 1.58.18 AM.jpeg" alt="Special Treat" class="product-image">
+                    </div>
+                    <h3 class="product-name">Special Treat</h3>
+                    <span class="product-tag">Food</span>
+                </div>
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="./foods/grand_trio_SALANKATIA.jpeg" alt="Grand Trio Salankatia" class="product-image">
+                    </div>
+                    <h3 class="product-name">Grand Trio Salankatia</h3>
+                    <span class="product-tag">Food</span>
+                </div>
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="./foods/pistachio_lotus.jpeg" alt="Pistachio Lotus" class="product-image">
+                    </div>
+                    <h3 class="product-name">Pistachio Lotus</h3>
+                    <span class="product-tag">Food</span>
+                </div>
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="./foods/pistachio_nuttela.jpeg" alt="Pistachio Nutella" class="product-image">
+                    </div>
+                    <h3 class="product-name">Pistachio Nutella</h3>
+                    <span class="product-tag">Food</span>
                 </div>
             </div>
         </div>
@@ -286,7 +343,9 @@
     <!-- Transition Divider -->
     <div class="wavy-divider invert">
         <svg viewBox="0 0 1440 120" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,120L1360,120C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120L0,120Z" fill="#0056D2"></path>
+            <path
+                d="M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,120L1360,120C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120L0,120Z"
+                fill="#0056D2"></path>
         </svg>
     </div>
 
@@ -348,56 +407,59 @@
         </div>
     </section>
 
-    <!-- Visit Section -->
-    <section class="visit-section" id="visit">
-        <div class="visit-content">
-            <div class="visit-left">
-                <h2 class="section-heading" id="visit-heading">Visit Baladi Laban</h2>
-                <p class="visit-description" id="visit-description">
-                    Indulge in creamy laban desserts and sweet treats crafted with love. Our stores are open daily from 2 PM to 1 AM.
+    <!-- About Section -->
+    <section class="editorial-section" id="about">
+        <div class="editorial-content">
+            <div class="editorial-left">
+                <h2 class="section-heading" id="about-heading">About Baladi Laban</h2>
+                <p class="editorial-description" id="about-description">
+                    Baladi Laban is a premium dessert haven offering creamy, rich laban-based treats and desserts. Experience the perfect blend of ancestral Egyptian dairy traditions and contemporary sweetness in every single bite.
                 </p>
-                <a href="#locations" class="outline-btn" id="visit-locations-btn">Locations</a>
+                <a href="#contact" class="outline-btn" id="about-contact-btn">Contact Now</a>
             </div>
-            <div class="visit-right">
-                <div class="visit-image-arch">
-                    <img src="./images/store-front.png" alt="Baladi Laban store exterior" class="visit-image" id="visit-image">
+            <div class="editorial-right">
+                <div class="editorial-image-arch">
+                    <img src="./images/about-cup.png" alt="Baladi Laban branded cup" class="editorial-image"
+                        id="about-image">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section class="about-section" id="about">
-        <div class="about-content">
-            <div class="about-left">
-                <h2 class="section-heading" id="about-heading">About Baladi Laban</h2>
-                <p class="about-description" id="about-description">
-                    Baladi Laban is a dessert haven offering creamy laban-based treats and desserts. Experience the perfect blend of tradition and creativity in every bite.
+    <!-- Visit Section -->
+    <section class="editorial-section" id="visit">
+        <div class="editorial-content reverse">
+            <div class="editorial-left">
+                <h2 class="section-heading" id="visit-heading">Visit Our Store</h2>
+                <p class="editorial-description" id="visit-description">
+                    Step into our sweet escape and indulge in signature laban desserts, Koshari treats, and creamy shakes crafted daily with love and the purest ingredients. Open daily to satisfy your sweet cravings.
                 </p>
-                <a href="#contact" class="outline-btn" id="about-contact-btn">Contact Now</a>
+                <a href="#locations" class="outline-btn" id="visit-locations-btn">Locations</a>
             </div>
-            <div class="about-right">
-                <div class="about-image-arch">
-                    <img src="./images/about-cup.png" alt="Baladi Laban branded cup" class="about-image" id="about-image">
+            <div class="editorial-right">
+                <div class="editorial-image-arch">
+                    <img src="./images/store-front.png" alt="Baladi Laban store exterior" class="editorial-image"
+                        id="visit-image">
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Franchise Section -->
-    <section class="franchise-section" id="franchise">
-        <div class="franchise-content">
-            <div class="franchise-left">
-                <div class="franchise-image-arch">
-                    <img src="./images/franchise-desserts.png" alt="Baladi Laban dessert assortment" class="franchise-image" id="franchise-image">
-                </div>
-            </div>
-            <div class="franchise-right">
-                <h2 class="section-heading" id="franchise-heading">Franchise Enquiries?</h2>
-                <p class="franchise-description" id="franchise-description">
-                    Partner with us and bring our brand to your city. Submit your details to start your franchise journey today.
+    <section class="editorial-section" id="franchise">
+        <div class="editorial-content">
+            <div class="editorial-left">
+                <h2 class="section-heading" id="franchise-heading">Franchise Enquiries</h2>
+                <p class="editorial-description" id="franchise-description">
+                    Partner with us and bring the original, creamiest Baladi Laban concept to your city. Get in touch with our expansion team today to start your sweet franchise business journey.
                 </p>
                 <a href="#contact" class="outline-btn" id="franchise-contact-btn">Contact Now</a>
+            </div>
+            <div class="editorial-right">
+                <div class="editorial-image-arch">
+                    <img src="./images/franchise-desserts.png" alt="Baladi Laban dessert assortment"
+                        class="editorial-image" id="franchise-image">
+                </div>
             </div>
         </div>
     </section>
@@ -406,61 +468,51 @@
     <section class="instagram-section" id="instagram">
         <div class="instagram-header">
             <h2 class="instagram-title" id="instagram-title">Follow us on Instagram</h2>
-            <a href="https://www.instagram.com/baladiallaban/" target="_blank" class="instagram-handle" id="instagram-handle">@baladiallaban</a>
+            <a href="https://www.instagram.com/baladiallaban/" target="_blank" class="instagram-handle"
+                id="instagram-handle">@baladiallaban</a>
         </div>
         <div class="instagram-grid" id="instagram-grid">
-            <a href="#" class="instagram-item" id="instagram-item-1">
-                <img src="./images/hero-dessert.png" alt="Instagram post 1" class="instagram-image">
+            <a href="https://www.instagram.com/baladiallaban/" target="_blank" class="instagram-item" id="instagram-item-1">
+                <img src="./foods/Banana_strawberry.jpeg" alt="Baladi Laban Instagram post 1" class="instagram-image">
             </a>
-            <a href="#" class="instagram-item" id="instagram-item-2">
-                <img src="./images/product-1.png" alt="Instagram post 2" class="instagram-image">
+            <a href="https://www.instagram.com/baladiallaban/" target="_blank" class="instagram-item" id="instagram-item-2">
+                <img src="./foods/Mango.jpeg" alt="Baladi Laban Instagram post 2" class="instagram-image">
             </a>
-            <a href="#" class="instagram-item" id="instagram-item-3">
-                <img src="./images/store-front.png" alt="Instagram post 3" class="instagram-image">
+            <a href="https://www.instagram.com/baladiallaban/" target="_blank" class="instagram-item" id="instagram-item-3">
+                <img src="./foods/grand_trio_SALANKATIA.jpeg" alt="Baladi Laban Instagram post 3" class="instagram-image">
             </a>
-            <a href="#" class="instagram-item" id="instagram-item-4">
-                <img src="./images/product-2.png" alt="Instagram post 4" class="instagram-image">
+            <a href="https://www.instagram.com/baladiallaban/" target="_blank" class="instagram-item" id="instagram-item-4">
+                <img src="./foods/Kinder_Nuttela.jpeg" alt="Baladi Laban Instagram post 4" class="instagram-image">
             </a>
         </div>
     </section>
 
     <!-- Explore / Locations Section -->
     <section class="explore-section" id="locations">
+        <div class="explore-header">
+            <h2 class="section-heading" id="explore-heading">Explore Baladi Laban</h2>
+        </div>
         <div class="explore-content">
             <div class="explore-left">
-                <h2 class="section-heading" id="explore-heading">Explore Baladi Laban</h2>
                 <div class="explore-store-image">
-                    <img src="./images/store-front.png" alt="Baladi Laban store front" class="store-image" id="store-image">
+                    <img src="./images/store-front.png" alt="Baladi Laban store front" class="store-image"
+                        id="store-image">
                 </div>
                 <div class="explore-details" id="explore-details">
                     <p class="store-city">New Delhi</p>
                     <p class="store-email">baladiallaban@gmail.com</p>
                     <p class="store-phone">+91 77366 60688</p>
                     <p class="store-hours">Open 2:00 PM - 1:00 AM</p>
-                </div>
-                <div class="explore-arrows" id="explore-arrows">
-                    <button class="explore-arrow" id="explore-prev" aria-label="Previous location">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M19 12H5M12 19l-7-7 7-7"/>
-                        </svg>
-                    </button>
-                    <button class="explore-arrow" id="explore-next" aria-label="Next location">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                    </button>
+                    <a href="https://maps.app.goo.gl/UKtrvr4XetQJqkXNA" target="_blank" rel="noopener"
+                        class="store-address">Open address in Google Maps</a>
                 </div>
             </div>
             <div class="explore-right">
                 <div class="explore-map" id="explore-map">
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3503.1235!2d77.1887!3d28.6273!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1sShop%20no.%2078%20Municipal%20Market%20Connaught%20Place%20New%20Delhi%20Delhi%20110001!2s28.6273,77.1887!5e0!3m2!1sen!2sin!4v1715000000" 
-                        width="100%" 
-                        height="100%" 
-                        style="border:0;" 
-                        allowfullscreen="" 
-                        loading="lazy"
-                        title="Baladi Laban location map">
+                    <iframe
+                        src="https://www.google.com/maps?q=Baladi%20Laban%20New%20Delhi&output=embed"
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade" title="Baladi Laban location map">
                     </iframe>
                 </div>
             </div>
@@ -470,7 +522,9 @@
     <!-- Footer Wavy Divider -->
     <div class="wavy-divider invert">
         <svg viewBox="0 0 1440 120" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,120L1360,120C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120L0,120Z" fill="#0056D2"></path>
+            <path
+                d="M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,120L1360,120C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120L0,120Z"
+                fill="#0056D2"></path>
         </svg>
     </div>
 
@@ -480,9 +534,12 @@
             <div class="footer-brand">
                 <div class="footer-logo" id="footer-logo">
                     <svg class="footer-logo-svg" viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="10" y="10" width="180" height="140" rx="30" ry="30" fill="none" stroke="white" stroke-width="3"/>
-                        <text x="100" y="90" text-anchor="middle" font-family="'Playfair Display', serif" font-size="28" font-weight="700" fill="white" font-style="italic">Baladi Laban</text>
-                        <text x="100" y="125" text-anchor="middle" font-family="'Playfair Display', serif" font-size="16" font-style="italic" fill="white">Original Taste</text>
+                        <rect x="10" y="10" width="180" height="140" rx="30" ry="30" fill="none" stroke="white"
+                            stroke-width="3" />
+                        <text x="100" y="90" text-anchor="middle" font-family="'Playfair Display', serif" font-size="28"
+                            font-weight="700" fill="white" font-style="italic">Baladi Laban</text>
+                        <text x="100" y="125" text-anchor="middle" font-family="'Playfair Display', serif"
+                            font-size="16" font-style="italic" fill="white">Original Taste</text>
                     </svg>
                 </div>
             </div>
@@ -502,20 +559,16 @@
             </div>
             <div class="footer-links-group">
                 <div class="footer-links-col" id="footer-links-col-1">
-                    <a href="#" class="footer-link">Our Ethos</a>
-                    <a href="#" class="footer-link">FAQs</a>
-                    <a href="#" class="footer-link">Glossary</a>
-                    <a href="#" class="footer-link">Press</a>
-                    <a href="#" class="footer-link">Careers</a>
-                    <a href="#" class="footer-link">E-Gift Cards</a>
+                    <h4 class="footer-links-title">Navigation</h4>
+                    <a href="#hero" class="footer-link">Home</a>
+                    <a href="#about" class="footer-link">Our Story</a>
+                    <a href="#" class="footer-link" id="footer-menu-link">Our Menu</a>
                 </div>
                 <div class="footer-links-col" id="footer-links-col-2">
-                    <a href="#" class="footer-link">Blog: The Scoop</a>
-                    <a href="#" class="footer-link">PopUp Shop</a>
-                    <a href="#" class="footer-link">Snack Rack</a>
+                    <h4 class="footer-links-title">Explore</h4>
+                    <a href="#locations" class="footer-link">Locations</a>
+                    <a href="#franchise" class="footer-link">Franchise</a>
                     <a href="https://www.instagram.com/baladiallaban/" target="_blank" class="footer-link">Instagram</a>
-                    <a href="#" class="footer-link">TikTok</a>
-                    <a href="#" class="footer-link">Facebook</a>
                 </div>
             </div>
         </div>
@@ -526,4 +579,5 @@
 
     <script src="./script.js"></script>
 </body>
+
 </html>
