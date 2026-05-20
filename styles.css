@@ -530,50 +530,61 @@ ol {
     .menu-overlay-container {
         padding: 40px 16px 20px;
     }
+
     .menu-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 20px 12px;
     }
+
     .menu-card-image-wrapper {
         height: 110px;
         margin-bottom: 16px;
     }
+
     .menu-card-name {
         font-size: 0.95rem;
         min-height: auto;
         margin-bottom: 12px;
     }
+
     .menu-card-prices {
         max-width: 100%;
         gap: 8px;
     }
+
     .price-pill {
         padding: 8px 12px;
         font-size: 0.85rem;
         min-height: 40px;
         border-radius: 10px;
     }
+
     .price-type {
         font-size: 0.65rem;
     }
+
     .price-amount {
         font-size: 0.85rem;
     }
+
     .salankatia-white-block {
         border-radius: 24px;
         margin-left: -16px;
         margin-right: -16px;
         padding: 40px 16px;
     }
+
     .menu-overlay-nav {
         flex-wrap: wrap;
         gap: 12px 20px;
         padding-top: 30px;
     }
+
     .menu-section-title {
         margin-bottom: 24px;
         font-size: 2rem;
     }
+
     .menu-overlay-close {
         top: 16px;
         right: 16px;
@@ -681,27 +692,6 @@ ol {
         linear-gradient(90deg, rgba(255, 255, 255, 0.96) 0%, rgba(255, 255, 255, 0.82) 34%, rgba(225, 238, 255, 0.24) 58%, rgba(225, 238, 255, 0) 100%),
         linear-gradient(0deg, rgba(225, 238, 255, 0.12), rgba(255, 255, 255, 0.02));
     pointer-events: none;
-}
-
-.wavy-divider {
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    width: 100%;
-    line-height: 0;
-    z-index: 5;
-}
-
-.wavy-divider svg {
-    display: block;
-    width: 100%;
-    height: 120px;
-}
-
-.wavy-divider.invert {
-    transform: rotate(180deg);
-    bottom: auto;
-    top: -1px;
 }
 
 /* ---------- Products Section ---------- */
@@ -1503,6 +1493,11 @@ ol {
     :root {
         --side-padding: 20px;
         --nav-height: 70px;
+    }
+
+    .hero-container {
+        min-height: auto;
+        padding: 64px var(--side-padding) 72px;
     }
 
     .navbar {
