@@ -48,11 +48,7 @@ html {
 
 body {
     font-family: var(--font-body);
-    background:
-        linear-gradient(90deg, rgba(0, 86, 210, 0.035) 1px, transparent 1px),
-        linear-gradient(0deg, rgba(0, 86, 210, 0.03) 1px, transparent 1px),
-        var(--cream-bg);
-    background-size: 44px 44px;
+    background: var(--cream-bg);
     color: var(--text-dark);
     line-height: 1.5;
     overflow-x: hidden;
@@ -317,15 +313,6 @@ ol {
     gap: 20px;
 }
 
-.menu-section-title::before,
-.menu-section-title::after {
-    content: '';
-    height: 2px;
-    width: 60px;
-    background: rgba(255, 255, 255, 0.4);
-    border-radius: 2px;
-}
-
 /* Salankatia White Container Block */
 .salankatia-section-container {
     padding: 20px 0;
@@ -344,11 +331,6 @@ ol {
 .salankatia-title {
     color: var(--blue-primary);
     text-shadow: none;
-}
-
-.salankatia-title::before,
-.salankatia-title::after {
-    background: rgba(0, 86, 210, 0.2);
 }
 
 /* Grid Layout */
@@ -592,10 +574,6 @@ ol {
         margin-bottom: 24px;
         font-size: 2rem;
     }
-    .menu-section-title::before,
-    .menu-section-title::after {
-        width: 30px;
-    }
     .menu-overlay-close {
         top: 16px;
         right: 16px;
@@ -688,7 +666,7 @@ ol {
 .hero-background-image {
     position: absolute;
     inset: var(--nav-height) 0 0 auto;
-    width: min(68vw, 1120px);
+    width: min(74vw, 1180px);
     height: calc(100% - var(--nav-height));
     object-fit: cover;
     object-position: center;
@@ -700,23 +678,9 @@ ol {
     inset: var(--nav-height) 0 0;
     z-index: 1;
     background:
-        linear-gradient(90deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.9) 36%, rgba(225, 238, 255, 0.48) 58%, rgba(225, 238, 255, 0.08) 100%),
-        linear-gradient(0deg, rgba(225, 238, 255, 0.2), rgba(255, 255, 255, 0.08));
+        linear-gradient(90deg, rgba(255, 255, 255, 0.96) 0%, rgba(255, 255, 255, 0.82) 34%, rgba(225, 238, 255, 0.24) 58%, rgba(225, 238, 255, 0) 100%),
+        linear-gradient(0deg, rgba(225, 238, 255, 0.12), rgba(255, 255, 255, 0.02));
     pointer-events: none;
-}
-
-.hero::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 18px;
-    z-index: 4;
-    background:
-        repeating-linear-gradient(90deg, var(--blue-primary) 0 28px, transparent 28px 56px),
-        var(--white);
-    opacity: 0.18;
 }
 
 .wavy-divider {
@@ -743,32 +707,9 @@ ol {
 /* ---------- Products Section ---------- */
 .products-section {
     padding: 120px 0 140px;
-    background:
-        linear-gradient(135deg, rgba(255, 255, 255, 0.45) 0 25%, transparent 25% 50%, rgba(255, 255, 255, 0.45) 50% 75%, transparent 75%),
-        var(--blue-accent);
-    background-size: 28px 28px;
+    background: var(--blue-accent);
     overflow-x: hidden;
     position: relative;
-}
-
-.products-section::before {
-    content: 'Fresh / Creamy / Original';
-    position: absolute;
-    top: 42px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: min(88vw, 760px);
-    padding: 10px 24px;
-    border: 1px solid rgba(0, 86, 210, 0.14);
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.62);
-    color: var(--blue-primary);
-    font-family: var(--font-accent);
-    font-size: 1rem;
-    font-style: italic;
-    font-weight: 700;
-    text-align: center;
-    box-shadow: 0 16px 40px rgba(0, 86, 210, 0.08);
 }
 
 .products-container {
@@ -880,15 +821,6 @@ ol {
     height: 100%;
     overflow: hidden;
     position: relative;
-}
-
-.product-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-top: 4px solid var(--blue-primary);
-    opacity: 0.9;
-    pointer-events: none;
 }
 
 .product-card:hover {
@@ -1007,14 +939,6 @@ ol {
     position: relative;
     overflow: hidden;
     scroll-margin-top: var(--nav-height);
-}
-
-.explore-section::before {
-    content: '';
-    position: absolute;
-    inset: 24px var(--side-padding) auto;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(0, 86, 210, 0.28), transparent);
 }
 
 .explore-header {
@@ -1159,25 +1083,6 @@ ol {
         var(--cream-bg);
     position: relative;
     overflow: hidden;
-}
-
-.editorial-section::before {
-    content: '';
-    position: absolute;
-    top: 56px;
-    left: var(--side-padding);
-    width: 92px;
-    height: 92px;
-    border-top: 2px solid rgba(0, 86, 210, 0.18);
-    border-left: 2px solid rgba(0, 86, 210, 0.18);
-    pointer-events: none;
-}
-
-.editorial-section:nth-of-type(even)::before {
-    left: auto;
-    right: var(--side-padding);
-    border-left: 0;
-    border-right: 2px solid rgba(0, 86, 210, 0.18);
 }
 
 .editorial-content {
@@ -1524,13 +1429,13 @@ ol {
 
     .hero-background-image {
         width: 82vw;
-        opacity: 0.76;
+        opacity: 0.9;
     }
 
     .hero-background-wash {
         background:
-            linear-gradient(90deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.88) 48%, rgba(225, 238, 255, 0.4) 74%, rgba(225, 238, 255, 0.08) 100%),
-            linear-gradient(0deg, rgba(225, 238, 255, 0.22), rgba(255, 255, 255, 0.08));
+            linear-gradient(90deg, rgba(255, 255, 255, 0.96) 0%, rgba(255, 255, 255, 0.8) 46%, rgba(225, 238, 255, 0.22) 74%, rgba(225, 238, 255, 0) 100%),
+            linear-gradient(0deg, rgba(225, 238, 255, 0.12), rgba(255, 255, 255, 0.02));
     }
 
     .product-tab {
@@ -1670,13 +1575,13 @@ ol {
         width: 100%;
         height: 54%;
         object-position: 62% center;
-        opacity: 0.42;
+        opacity: 0.72;
     }
 
     .hero-background-wash {
         background:
-            linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.92) 45%, rgba(225, 238, 255, 0.62) 76%, rgba(225, 238, 255, 0.42) 100%),
-            linear-gradient(90deg, rgba(255, 255, 255, 0.92), rgba(225, 238, 255, 0.14));
+            linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.84) 45%, rgba(225, 238, 255, 0.36) 76%, rgba(225, 238, 255, 0.12) 100%),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.82), rgba(225, 238, 255, 0.04));
     }
 
     .product-tab {
@@ -1685,13 +1590,6 @@ ol {
 
     .products-section {
         padding-top: 104px;
-    }
-
-    .products-section::before {
-        top: 30px;
-        width: calc(100% - 40px);
-        padding: 8px 16px;
-        font-size: 0.9rem;
     }
 
     .products-tabs {
@@ -1772,12 +1670,6 @@ ol {
         border-width: 8px;
     }
 
-    .editorial-section::before {
-        width: 58px;
-        height: 58px;
-        top: 34px;
-    }
-
     .explore-section {
         padding-top: 92px;
         padding-bottom: 48px;
@@ -1831,10 +1723,6 @@ ol {
 
     .product-card {
         padding: 12px;
-    }
-
-    .product-card::before {
-        border-top-width: 3px;
     }
 
     .product-image-wrapper {
