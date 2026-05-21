@@ -115,6 +115,7 @@
     height: 100%;
     overflow: hidden;
     position: relative;
+    cursor: pointer;
 }
 
 .product-card:hover {

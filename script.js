@@ -68,6 +68,21 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('click', closeMenu);
     });
 
+    // Open menu when clicking any homepage food card
+    document.querySelectorAll('[data-open-menu]').forEach((el) => {
+        el.addEventListener('click', (e) => {
+            e.preventDefault?.();
+            openMenu();
+        });
+
+        el.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                openMenu();
+            }
+        });
+    });
+
     // Close on Escape key
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && menuOverlay?.classList.contains('active')) {
