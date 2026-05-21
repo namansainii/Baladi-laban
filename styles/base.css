@@ -1,0 +1,86 @@
+﻿/* ============================================
+   Feel Laban â€” Website Clone
+   Design System & Global Styles
+   ============================================ */
+
+/* ---------- CSS Custom Properties ---------- */
+:root {
+    --blue-primary: #0056D2;
+    --blue-secondary: #003da8;
+    --blue-accent: #E1EEFF;
+    --blue-light: #7BA3DB;
+    --blue-tint: #F3F8FF;
+    --cream-bg: #FAF7F2; /* Modern premium warm cream */
+    --text-main: #111827;
+    --text-muted: #4B5563;
+    --text-dark: #1F2937; /* Defined correctly to resolve typography bug */
+    --white: #ffffff;
+
+    --font-heading: 'Inter', sans-serif;
+    --font-accent: 'Playfair Display', serif;
+    --font-body: 'Inter', sans-serif;
+
+    --nav-height: 80px;
+    --side-padding: clamp(20px, 5vw, 80px);
+    --border-radius: 24px;
+    --btn-radius: 12px;
+
+    --transition-premium: 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+    --transition-default: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ---------- Reset & Base ---------- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    overflow-x: hidden;
+    width: 100%;
+    scroll-padding-top: calc(var(--nav-height) + 28px);
+}
+
+body {
+    font-family: var(--font-body);
+    background: var(--cream-bg);
+    color: var(--text-dark);
+    line-height: 1.5;
+    overflow-x: hidden;
+    width: 100%;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+

@@ -1,0 +1,440 @@
+﻿/* ---------- Full-Screen Menu Overlay ---------- */
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--blue-primary);
+    background-image:
+        radial-gradient(ellipse at 20% 50%, rgba(255, 255, 255, 0.04) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 30%, rgba(255, 255, 255, 0.03) 0%, transparent 50%);
+    z-index: 1000;
+    overflow-y: auto;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(30px);
+    transition:
+        opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+        visibility 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.menu-overlay-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px var(--side-padding) 40px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Close button */
+.menu-overlay-close {
+    position: fixed;
+    top: 24px;
+    right: 32px;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    cursor: pointer;
+    z-index: 1100;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+    outline: none;
+    transition: all var(--transition-default);
+}
+
+.menu-overlay-close:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: rotate(90deg);
+}
+
+/* Menu Header */
+.menu-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+
+.menu-decor-left,
+.menu-decor-right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.menu-decor-left {
+    justify-content: flex-start;
+}
+
+.menu-decor-right {
+    justify-content: flex-end;
+}
+
+.decor-bowl {
+    width: 110px;
+    height: auto;
+    opacity: 0.35;
+}
+
+.menu-logo-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.menu-brand-logo {
+    width: 160px;
+    height: auto;
+}
+
+/* Menu Section */
+.menu-section {
+    margin-bottom: 70px;
+    width: 100%;
+}
+
+.menu-section-title {
+    font-family: var(--font-accent);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    font-style: italic;
+    color: var(--white);
+    text-align: center;
+    margin-bottom: 40px;
+    letter-spacing: 0.05em;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Salankatia White Container Block */
+.salankatia-section-container {
+    padding: 20px 0;
+}
+
+.salankatia-white-block {
+    background-color: var(--cream-bg);
+    border-radius: 36px;
+    margin-left: -40px;
+    margin-right: -40px;
+    padding: 70px 40px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.salankatia-title {
+    color: var(--blue-primary);
+    text-shadow: none;
+}
+
+/* Grid Layout */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    width: 100%;
+}
+
+/* Product Cards */
+.menu-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: transparent;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    user-select: none;
+}
+
+/* Hover and Active State Rules */
+.menu-card:hover {
+    transform: translateY(-12px) scale(1.04);
+}
+
+/* Mobile / touch feedback (no hover + coarse pointer) */
+@media (hover: none) and (pointer: coarse) {
+    /* prevent "sticky hover" on touch devices */
+    .menu-card:hover {
+        transform: none;
+    }
+
+    .menu-card:hover .menu-card-image-wrapper img {
+        transform: none;
+    }
+
+    .menu-card:hover .price-pill {
+        transform: none;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .menu-card:hover .price-pill.dark-pill {
+        box-shadow: 0 8px 20px rgba(0, 86, 210, 0.2);
+    }
+
+    .menu-card:active,
+    .menu-card.is-pressed {
+        transform: translateY(-14px) scale(1.06);
+    }
+
+    .menu-card:active .menu-card-image-wrapper img,
+    .menu-card.is-pressed .menu-card-image-wrapper img {
+        transform: scale(1.14) rotate(3deg);
+    }
+
+    .menu-card:active .price-pill,
+    .menu-card.is-pressed .price-pill {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .menu-card:active .price-pill.dark-pill,
+    .menu-card.is-pressed .price-pill.dark-pill {
+        box-shadow: 0 12px 24px rgba(0, 86, 210, 0.25);
+    }
+}
+
+.menu-card-image-wrapper {
+    height: 180px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+
+.menu-card-image-wrapper img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.25));
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.menu-card:hover .menu-card-image-wrapper img {
+    transform: scale(1.1) rotate(3deg);
+}
+
+.menu-card-name {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 20px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: capitalize;
+    letter-spacing: 0.03em;
+    line-height: 1.3;
+}
+
+.salankatia-card .menu-card-name {
+    color: var(--text-dark);
+}
+
+.menu-card-prices {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    max-width: 180px;
+}
+
+/* Price Pills styling */
+.price-pill {
+    background-color: rgba(255, 255, 255, 0.95);
+    color: var(--blue-primary);
+    border-radius: 12px;
+    padding: 10px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 0.95rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    min-height: 46px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(8px);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+
+.price-pill.dark-pill {
+    background-color: var(--blue-primary);
+    color: var(--white);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 20px rgba(0, 86, 210, 0.2);
+}
+
+.menu-card:hover .price-pill {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.menu-card:hover .price-pill.dark-pill {
+    box-shadow: 0 12px 24px rgba(0, 86, 210, 0.25);
+}
+
+.price-type {
+    font-weight: 600;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    opacity: 0.85;
+}
+
+.price-amount {
+    font-weight: 800;
+    font-size: 1rem;
+}
+
+/* Bottom Nav Menu links */
+.menu-overlay-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    padding: 40px var(--side-padding) 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    max-width: 1200px;
+    margin: 40px auto 0;
+    position: relative;
+    z-index: 1;
+}
+
+.menu-nav-link {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.7);
+    transition: color var(--transition-default);
+    position: relative;
+}
+
+.menu-nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--white);
+    transition: width var(--transition-default);
+}
+
+.menu-nav-link:hover {
+    color: var(--white);
+}
+
+.menu-nav-link:hover::after {
+    width: 100%;
+}
+
+/* Menu Overlay Responsive Styles */
+@media (max-width: 1024px) {
+    .menu-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px 24px;
+    }
+    .menu-header {
+        margin-bottom: 30px;
+    }
+    .menu-decor-left,
+    .menu-decor-right {
+        display: none;
+    }
+    .menu-logo-wrapper {
+        justify-content: center;
+    }
+    .salankatia-white-block {
+        margin-left: -24px;
+        margin-right: -24px;
+        padding: 50px 24px;
+    }
+}
+
+@media (max-width: 600px) {
+    .menu-overlay-container {
+        padding: 40px 16px 20px;
+    }
+
+    .menu-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px 12px;
+    }
+
+    .menu-card-image-wrapper {
+        height: 110px;
+        margin-bottom: 16px;
+    }
+
+    .menu-card-name {
+        font-size: 0.95rem;
+        min-height: auto;
+        margin-bottom: 12px;
+    }
+
+    .menu-card-prices {
+        max-width: 100%;
+        gap: 8px;
+    }
+
+    .price-pill {
+        padding: 8px 12px;
+        font-size: 0.85rem;
+        min-height: 40px;
+        border-radius: 10px;
+    }
+
+    .price-type {
+        font-size: 0.65rem;
+    }
+
+    .price-amount {
+        font-size: 0.85rem;
+    }
+
+    .salankatia-white-block {
+        border-radius: 24px;
+        margin-left: -16px;
+        margin-right: -16px;
+        padding: 40px 16px;
+    }
+
+    .menu-overlay-nav {
+        flex-wrap: wrap;
+        gap: 12px 20px;
+        padding-top: 30px;
+    }
+
+    .menu-section-title {
+        margin-bottom: 24px;
+        font-size: 2rem;
+    }
+
+    .menu-overlay-close {
+        top: 16px;
+        right: 16px;
+        width: 40px;
+        height: 40px;
+    }
+}
+

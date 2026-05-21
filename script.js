@@ -9,11 +9,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuOverlay = document.getElementById('menu-overlay');
     const menuOverlayClose = document.getElementById('menu-overlay-close');
     const menuNavLinks = document.querySelectorAll('[data-menu-close]');
+    let menuCardsObserved = false;
 
     function openMenu() {
         if (menuOverlay) {
             menuOverlay.classList.add('active');
             document.body.style.overflow = 'hidden';
+
+            // Lazy-init menu card reveal + touch feedback once the overlay is shown
+            if (!menuCardsObserved) {
+                initMenuCardEffects();
+                menuCardsObserved = true;
+            }
         }
     }
 
@@ -227,4 +234,37 @@ document.addEventListener('DOMContentLoaded', () => {
         .hero-actions { transition-delay: 0.3s; }
     `;
     document.head.appendChild(style);
+
+    function initMenuCardEffects() {
+        if (!menuOverlay) return;
+
+        // Reveal menu cards when the overlay is opened
+        const menuCards = menuOverlay.querySelectorAll('.menu-card');
+        menuCards.forEach((card) => {
+            card.classList.add('reveal-init');
+            revealObserver.observe(card);
+        });
+
+        // Tap/press feedback for touch devices (simulates hover "pop")
+        const isTouchLike = window.matchMedia?.('(hover: none) and (pointer: coarse)')?.matches;
+        if (!isTouchLike) return;
+
+        let pressedCard = null;
+        const clearPressed = () => {
+            if (pressedCard) pressedCard.classList.remove('is-pressed');
+            pressedCard = null;
+        };
+
+        menuOverlay.addEventListener('pointerdown', (e) => {
+            const card = e.target?.closest?.('.menu-card');
+            if (!card) return;
+            clearPressed();
+            pressedCard = card;
+            pressedCard.classList.add('is-pressed');
+        }, { passive: true });
+
+        menuOverlay.addEventListener('pointerup', clearPressed, { passive: true });
+        menuOverlay.addEventListener('pointercancel', clearPressed, { passive: true });
+        menuOverlay.addEventListener('scroll', clearPressed, { passive: true });
+    }
 });

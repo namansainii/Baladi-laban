@@ -1,0 +1,109 @@
+﻿/* ---------- Navigation ---------- */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 var(--side-padding);
+    height: var(--nav-height);
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 10px 30px rgba(0, 86, 210, 0.04);
+    transition: all 0.4s ease;
+}
+
+.nav-link {
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: var(--text-main);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    position: relative;
+}
+
+.nav-logo {
+    font-family: var(--font-accent);
+    font-weight: 900;
+    font-size: 1.5rem;
+    color: var(--blue-primary);
+    font-style: italic;
+    text-shadow: 0 8px 22px rgba(0, 86, 210, 0.12);
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.nav-btn-contact {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 12px 28px;
+    background-color: var(--blue-primary);
+    color: var(--white);
+    font-size: 0.875rem;
+    font-weight: 700;
+    border-radius: var(--btn-radius);
+    transition: all 0.3s cubic-bezier(0.2, 1, 0.3, 1);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    box-shadow: 0 4px 0 var(--blue-secondary);
+}
+
+.nav-btn-contact:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 var(--blue-secondary);
+}
+
+.nav-btn-contact:active {
+    transform: translateY(2px);
+    box-shadow: 0 0 0 var(--blue-secondary);
+}
+
+.btn-icon {
+    width: auto;
+    height: auto;
+    background: transparent;
+    color: currentColor;
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-icon svg {
+    display: block;
+}
+
+.mobile-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    width: 32px;
+    height: 32px;
+    justify-content: center;
+    z-index: 110;
+}
+
+.mobile-toggle .bar {
+    width: 100%;
+    height: 2.5px;
+    background-color: var(--blue-primary);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
