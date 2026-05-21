@@ -11,6 +11,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuNavLinks = document.querySelectorAll('[data-menu-close]');
     let menuCardsObserved = false;
 
+    // ---- Scroll Morph: Hero Brand -> Navbar Logo ----
+    const navLogo = document.getElementById('nav-logo');
+    const heroOverlayBrand = document.querySelector('.hero-bilingual-brand--overlay');
+    const heroBrandEn = heroOverlayBrand?.querySelector('.hero-brand-en') || null;
+    let brandMorphRafPending = false;
+    let heroOverlayInitialRect = null;
+    let heroOverlayInitialWidth = null;
+    let heroOverlayInitialHeight = null;
+    let heroOverlayPlaceholder = null;
+
     function openMenu() {
         if (menuOverlay) {
             menuOverlay.classList.add('active');
@@ -82,6 +92,127 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    function clamp01(value) {
+        return Math.max(0, Math.min(1, value));
+    }
+
+    function smoothstep(t) {
+        const x = clamp01(t);
+        return x * x * (3 - 2 * x);
+    }
+
+    function updateBrandMorph() {
+        brandMorphRafPending = false;
+        if (!navLogo || !heroOverlayBrand || !heroBrandEn) return;
+
+        // If hero is gone (e.g. scrolled past), just show nav logo normally.
+        const navRect = navLogo.getBoundingClientRect();
+        if (!heroOverlayInitialRect) {
+            const rect = heroOverlayBrand.getBoundingClientRect();
+            heroOverlayInitialRect = { left: rect.left, top: rect.top };
+            heroOverlayInitialWidth = rect.width || 1;
+            heroOverlayInitialHeight = rect.height || 1;
+            heroOverlayBrand.classList.add('is-morphing');
+
+            // Move to <body> so it can appear above the navbar (escape hero stacking context).
+            if (!heroOverlayPlaceholder) {
+                heroOverlayPlaceholder = document.createComment('hero-overlay-brand-placeholder');
+                heroOverlayBrand.parentNode?.insertBefore(heroOverlayPlaceholder, heroOverlayBrand);
+            }
+            if (heroOverlayBrand.parentNode !== document.body) {
+                document.body.appendChild(heroOverlayBrand);
+            }
+        }
+
+        const startY = 0;
+        const endY = Math.max(420, Math.min(window.innerHeight * 1.25, 900));
+        const rawProgress = (window.scrollY - startY) / endY;
+        const progress = smoothstep(rawProgress);
+
+        // Keep the real (animated) hero brand as the navbar brand when morphed.
+        // So the English <-> Urdu animation continues even in the navbar position.
+        navLogo.style.opacity = '0';
+        navLogo.style.pointerEvents = 'none';
+
+        // Move the real hero overlay brand into the navbar logo position.
+        const from = heroOverlayInitialRect;
+
+        // Make the brand a bit larger than the normal navbar logo for readability,
+        // but clamp on small screens so it doesn't become huge.
+        let targetWidth = Math.max(navRect.width * 2.1, 240);
+        if (window.innerWidth <= 480) {
+            targetWidth = Math.min(200, Math.max(140, navRect.width * 1.6));
+        } else if (window.innerWidth <= 768) {
+            targetWidth = Math.min(260, Math.max(180, navRect.width * 1.9));
+        }
+        const targetScale = heroOverlayInitialWidth > 0 ? (targetWidth / heroOverlayInitialWidth) : 1;
+        const targetHeight = heroOverlayInitialHeight * targetScale;
+
+        const toLeft = navRect.left + (navRect.width - targetWidth) / 2;
+        const toTop = navRect.top + (navRect.height - targetHeight) / 2;
+
+        const translateX = from.left + (toLeft - from.left) * progress;
+        const translateY = from.top + (toTop - from.top) * progress;
+        const uniformScale = 1 + (targetScale - 1) * progress;
+
+        heroOverlayBrand.style.opacity = '1';
+        heroOverlayBrand.style.transform = `translate3d(${translateX}px, ${translateY}px, 0) scale(${uniformScale})`;
+
+        // When we're essentially at the top, let CSS control positioning (avoids any jitter).
+        if (progress < 0.001) {
+            heroOverlayBrand.classList.remove('is-morphing');
+            heroOverlayBrand.style.transform = '';
+            heroOverlayBrand.style.opacity = '';
+            heroOverlayInitialRect = null;
+            heroOverlayInitialWidth = null;
+            heroOverlayInitialHeight = null;
+
+            // Restore to original DOM position.
+            if (heroOverlayPlaceholder?.parentNode) {
+                heroOverlayPlaceholder.parentNode.insertBefore(heroOverlayBrand, heroOverlayPlaceholder);
+                heroOverlayPlaceholder.parentNode.removeChild(heroOverlayPlaceholder);
+            }
+            heroOverlayPlaceholder = null;
+        }
+    }
+
+    function requestBrandMorphUpdate() {
+        if (brandMorphRafPending) return;
+        brandMorphRafPending = true;
+        window.requestAnimationFrame(updateBrandMorph);
+    }
+
+    // Init state
+    const reduceMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches;
+    if (!reduceMotion && navLogo && heroOverlayBrand && heroBrandEn) {
+        navLogo.style.opacity = '0';
+        navLogo.style.pointerEvents = 'none';
+        requestBrandMorphUpdate();
+        window.addEventListener('scroll', requestBrandMorphUpdate, { passive: true });
+        window.addEventListener('resize', () => {
+            heroOverlayInitialRect = null;
+            heroOverlayInitialWidth = null;
+            heroOverlayInitialHeight = null;
+            heroOverlayBrand.classList.remove('is-morphing');
+            heroOverlayBrand.style.transform = '';
+            requestBrandMorphUpdate();
+        });
+    } else if (navLogo) {
+        navLogo.style.opacity = '';
+        navLogo.style.pointerEvents = '';
+        // Ensure hero overlay brand is in its normal place on reduced motion.
+        if (heroOverlayBrand) {
+            heroOverlayBrand.classList.remove('is-morphing');
+            heroOverlayBrand.style.transform = '';
+            heroOverlayBrand.style.opacity = '';
+            if (heroOverlayPlaceholder?.parentNode) {
+                heroOverlayPlaceholder.parentNode.insertBefore(heroOverlayBrand, heroOverlayPlaceholder);
+                heroOverlayPlaceholder.parentNode.removeChild(heroOverlayPlaceholder);
+            }
+            heroOverlayPlaceholder = null;
+        }
+    }
 
     // Close on Escape key
     document.addEventListener('keydown', (e) => {

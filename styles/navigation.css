@@ -33,6 +33,7 @@
     color: var(--blue-primary);
     font-style: italic;
     text-shadow: 0 8px 22px rgba(0, 86, 210, 0.12);
+    transition: opacity 0.2s linear;
 }
 
 .nav-left {
