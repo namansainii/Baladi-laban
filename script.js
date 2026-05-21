@@ -86,8 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const locations = [
         {
             city: 'New Delhi',
-            email: 'baladiallaban@gmail.com',
-            phone: '+91 77366 60688',
+            phone: '+91 7780521176',
             hours: 'Open 2:00 PM - 1:00 AM',
             address: 'https://maps.app.goo.gl/UKtrvr4XetQJqkXNA'
         }
@@ -97,13 +96,11 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateLocation() {
         const loc = locations[currentLocation];
         const cityEl = document.querySelector('.store-city');
-        const emailEl = document.querySelector('.store-email');
         const phoneEl = document.querySelector('.store-phone');
         const hoursEl = document.querySelector('.store-hours');
         const addressEl = document.querySelector('.store-address');
 
         if (cityEl) cityEl.textContent = loc.city;
-        if (emailEl) emailEl.textContent = loc.email;
         if (phoneEl) phoneEl.textContent = loc.phone;
         if (hoursEl) hoursEl.textContent = loc.hours;
         if (addressEl) addressEl.href = loc.address;
@@ -120,19 +117,6 @@ document.addEventListener('DOMContentLoaded', () => {
         exploreNext.addEventListener('click', () => {
             currentLocation = (currentLocation + 1) % locations.length;
             updateLocation();
-        });
-    }
-
-    // ---- Footer Form ----
-    const footerForm = document.getElementById('footer-form');
-    if (footerForm) {
-        footerForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const email = document.getElementById('footer-email-input')?.value;
-            if (email) {
-                alert('Thank you for subscribing!');
-                footerForm.reset();
-            }
         });
     }
 

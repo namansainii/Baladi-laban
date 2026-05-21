@@ -1094,7 +1094,7 @@ ol {
     margin-bottom: 4px;
 }
 
-.store-email {
+.store-phone {
     color: var(--blue-primary);
 }
 
@@ -1415,6 +1415,26 @@ ol {
     border-radius: 8px;
     overflow: hidden;
     max-width: 380px;
+}
+
+.footer-contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+}
+
+.footer-contact-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 12px 18px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.95);
+    color: var(--blue-primary);
+    font-weight: 700;
+    letter-spacing: 0.02em;
 }
 
 .footer-input {
