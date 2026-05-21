@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuOverlayClose = document.getElementById('menu-overlay-close');
     const menuNavLinks = document.querySelectorAll('[data-menu-close]');
     let menuCardsObserved = false;
+    let scrollLockY = 0;
 
     // ---- Scroll Morph: Hero Brand -> Navbar Logo ----
     const navLogo = document.getElementById('nav-logo');
@@ -24,6 +25,13 @@ document.addEventListener('DOMContentLoaded', () => {
     function openMenu() {
         if (menuOverlay) {
             menuOverlay.classList.add('active');
+            // Robust scroll lock (works on mobile Safari too)
+            scrollLockY = window.scrollY || window.pageYOffset || 0;
+            document.body.style.position = 'fixed';
+            document.body.style.top = `-${scrollLockY}px`;
+            document.body.style.left = '0';
+            document.body.style.right = '0';
+            document.body.style.width = '100%';
             document.body.style.overflow = 'hidden';
 
             // Lazy-init menu card reveal + touch feedback once the overlay is shown
@@ -37,7 +45,14 @@ document.addEventListener('DOMContentLoaded', () => {
     function closeMenu() {
         if (menuOverlay) {
             menuOverlay.classList.remove('active');
+            const y = scrollLockY;
+            document.body.style.position = '';
+            document.body.style.top = '';
+            document.body.style.left = '';
+            document.body.style.right = '';
+            document.body.style.width = '';
             document.body.style.overflow = '';
+            if (y) window.scrollTo(0, y);
         }
     }
 

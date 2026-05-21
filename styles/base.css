@@ -48,13 +48,35 @@ html {
 
 body {
     font-family: var(--font-body);
-    background: var(--cream-bg);
+    background-color: var(--cream-bg);
+    background-image: url("../images/wall-pattern.png");
+    background-repeat: repeat;
+    background-size: 860px auto;
     color: var(--text-dark);
     line-height: 1.5;
     overflow-x: hidden;
     width: 100%;
     -ms-overflow-style: none;
     scrollbar-width: none;
+}
+
+/* Pattern layer (visible even when sections have their own backgrounds) */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url("../images/wall-pattern.png");
+    background-repeat: repeat;
+    background-size: 860px auto;
+    opacity: 0.18;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Keep all content above the pattern layer */
+body > * {
+    position: relative;
+    z-index: 1;
 }
 
 body::-webkit-scrollbar {

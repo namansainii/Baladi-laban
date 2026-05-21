@@ -8,6 +8,18 @@
     overflow: hidden;
 }
 
+.editorial-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("../images/wall-pattern.png");
+    background-repeat: repeat;
+    background-size: 860px auto;
+    opacity: 0.08;
+    pointer-events: none;
+    z-index: 0;
+}
+
 .editorial-content {
     max-width: var(--container-max);
     margin: 0 auto;
