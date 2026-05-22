@@ -4,6 +4,14 @@
    ============================================ */
 
 /* ---------- CSS Custom Properties ---------- */
+@font-face {
+    font-family: 'Collidge';
+    src: url('../fonts/Collidge-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 :root {
     --blue-primary: #0056D2;
     --blue-secondary: #003da8;

@@ -386,6 +386,41 @@ document.addEventListener('DOMContentLoaded', () => {
         lastScrollY = currentScrollY;
     });
 
+    // ---- Read More (About section) ----
+    document.querySelectorAll('[data-read-more-button]').forEach((btn) => {
+        const controlsId = btn.getAttribute('aria-controls');
+        const target = controlsId ? document.getElementById(controlsId) : null;
+        if (!target) return;
+
+        // Hide if content is already short (no overflow after clamp)
+        const isOverflowing = target.scrollHeight > target.clientHeight + 4;
+        if (!isOverflowing) {
+            btn.style.display = 'none';
+            return;
+        }
+
+        btn.addEventListener('click', () => {
+            const nextExpanded = !target.classList.contains('is-expanded');
+
+            // Add a transient class so we can handle "closing" overflow during animation.
+            target.classList.remove('is-expanding', 'is-collapsing');
+            target.classList.add(nextExpanded ? 'is-expanding' : 'is-collapsing');
+
+            // Trigger transition (max-height) on next frame for consistent animation.
+            requestAnimationFrame(() => {
+                target.classList.toggle('is-expanded', nextExpanded);
+            });
+
+            btn.setAttribute('aria-expanded', String(nextExpanded));
+            btn.textContent = nextExpanded ? 'Read less' : 'Read more';
+        });
+
+        target.addEventListener('transitionend', (e) => {
+            if (e.propertyName !== 'max-height') return;
+            target.classList.remove('is-expanding', 'is-collapsing');
+        });
+    });
+
     // ---- Intersection Observer for Premium Animations ----
     const observerOptions = {
         threshold: 0.1,

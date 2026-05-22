@@ -24,7 +24,7 @@
 
 .marquee-word {
     font-family: var(--font-heading);
-    font-size: clamp(3rem, 7vw, 7.5rem);
+    font-size: clamp(2.25rem, 5vw, 5rem);
     font-weight: 900;
     color: var(--blue-primary);
     letter-spacing: -0.04em;
@@ -36,7 +36,7 @@
 }
 
 .marquee-dot {
-    font-size: clamp(2rem, 4vw, 4rem);
+    font-size: clamp(1.6rem, 3.2vw, 3rem);
     color: var(--blue-secondary);
     padding: 0 30px;
     font-weight: 900;

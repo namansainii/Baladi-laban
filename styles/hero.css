@@ -1,4 +1,4 @@
-﻿/* ---------- Hero Section ---------- */
+/* ---------- Hero Section ---------- */
 .hero {
     position: relative;
     width: 100%;
@@ -35,7 +35,7 @@
     position: absolute;
     z-index: 4;
     pointer-events: none;
-    width: min(920px, 52vw);
+    width: min(760px, 44vw);
     text-align: center;
     /* Move into the open fabric area (red circle in screenshot). */
     top: calc(var(--nav-height) + 110px);
@@ -75,7 +75,7 @@
 .hero-brand-en {
     font-family: var(--font-accent);
     font-style: italic;
-    font-size: clamp(5rem, 6.8vw, 7.75rem);
+    font-size: clamp(3.25rem, 4.8vw, 5.25rem);
     letter-spacing: 0;
     line-height: 1.05;
     animation: heroBrandEn 9s ease-in-out infinite;
@@ -83,7 +83,7 @@
 
 .hero-brand-ur {
     font-family: 'Noto Nastaliq Urdu', serif;
-    font-size: clamp(5rem, 6.8vw, 7.75rem);
+    font-size: clamp(3.25rem, 4.8vw, 5.25rem);
     font-weight: 600;
     line-height: 1.05;
     animation: heroBrandUr 9s ease-in-out infinite;
@@ -241,9 +241,9 @@
 
 .hero-title {
     font-family: var(--font-heading);
-    font-size: clamp(3.5rem, 7.4vw, 7rem);
+    font-size: clamp(2.35rem, 4.2vw, 3.75rem);
     font-weight: 900;
-    line-height: 0.95;
+    line-height: 1.02;
     color: var(--blue-primary);
     margin-bottom: 28px;
     letter-spacing: 0;
