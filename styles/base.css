@@ -13,8 +13,9 @@
 }
 
 :root {
-    --blue-primary: #0056D2;
-    --blue-secondary: #003da8;
+    /* Brand blue (used for menu overlay background too). */
+    --blue-primary: #0131ff;
+    --blue-secondary: #0026cc;
     --blue-accent: #E1EEFF;
     --blue-light: #7BA3DB;
     --blue-tint: #F3F8FF;
@@ -24,7 +25,8 @@
     --text-dark: #1F2937; /* Defined correctly to resolve typography bug */
     --white: #ffffff;
 
-    --font-heading: 'Collidge', sans-serif;
+    /* Use an elegant premium heading font (Collidge removed). */
+    --font-heading: 'Playfair Display', serif;
     --font-accent: 'Playfair Display', serif;
     --font-body: 'Inter', sans-serif;
 
