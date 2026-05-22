@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ---- Scroll Morph: Hero Brand -> Navbar Logo ----
     const navLogo = document.getElementById('nav-logo');
+    const navLogoText = navLogo?.querySelector?.('.nav-logo-text') || null;
     const heroOverlayBrand = document.querySelector('.hero-bilingual-brand--overlay');
     const heroBrandEn = heroOverlayBrand?.querySelector('.hero-brand-en') || null;
     let brandMorphRafPending = false;
@@ -21,6 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let heroOverlayInitialWidth = null;
     let heroOverlayInitialHeight = null;
     let heroOverlayPlaceholder = null;
+    let mascotInitialLeft = null;
+    let mascotWidth = null;
 
     function openMenu() {
         if (menuOverlay) {
@@ -122,13 +125,22 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!navLogo || !heroOverlayBrand || !heroBrandEn) return;
 
         // If hero is gone (e.g. scrolled past), just show nav logo normally.
-        const navRect = navLogo.getBoundingClientRect();
+        const navRect = (navLogoText || navLogo).getBoundingClientRect();
         if (!heroOverlayInitialRect) {
             const rect = heroOverlayBrand.getBoundingClientRect();
             heroOverlayInitialRect = { left: rect.left, top: rect.top };
             heroOverlayInitialWidth = rect.width || 1;
             heroOverlayInitialHeight = rect.height || 1;
             heroOverlayBrand.classList.add('is-morphing');
+            navLogo.classList.add('is-shifting');
+
+            // Store initial mascot details for sliding math
+            const logoImg = navLogo?.querySelector?.('.nav-logo-image');
+            if (logoImg) {
+                const imgRect = logoImg.getBoundingClientRect();
+                mascotInitialLeft = imgRect.left;
+                mascotWidth = imgRect.width;
+            }
 
             // Move to <body> so it can appear above the navbar (escape hero stacking context).
             if (!heroOverlayPlaceholder) {
@@ -147,8 +159,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Keep the real (animated) hero brand as the navbar brand when morphed.
         // So the English <-> Urdu animation continues even in the navbar position.
-        navLogo.style.opacity = '0';
-        navLogo.style.pointerEvents = 'none';
+        if (navLogoText) {
+            navLogoText.style.opacity = '0';
+        } else {
+            navLogo.style.opacity = '0';
+            navLogo.style.pointerEvents = 'none';
+        }
 
         // Move the real hero overlay brand into the navbar logo position.
         const from = heroOverlayInitialRect;
@@ -167,21 +183,55 @@ document.addEventListener('DOMContentLoaded', () => {
         const toLeft = navRect.left + (navRect.width - targetWidth) / 2;
         const toTop = navRect.top + (navRect.height - targetHeight) / 2;
 
-        const translateX = from.left + (toLeft - from.left) * progress;
+        // Calculate safety margin to prevent cutoff on small screens
+        const gap = window.innerWidth <= 768 ? 6 : 12; // visual padding gap
+        const safeMargin = window.innerWidth <= 768 ? 12 : 20;
+
+        let targetMascotLeft = toLeft - gap - (mascotWidth || 44);
+        let adjustedToLeft = toLeft;
+
+        if (mascotInitialLeft !== null && mascotWidth !== null) {
+            if (targetMascotLeft < safeMargin) {
+                targetMascotLeft = safeMargin;
+            }
+            adjustedToLeft = targetMascotLeft + mascotWidth + gap;
+        }
+
+        const translateX = from.left + (adjustedToLeft - from.left) * progress;
         const translateY = from.top + (toTop - from.top) * progress;
         const uniformScale = 1 + (targetScale - 1) * progress;
 
         heroOverlayBrand.style.opacity = '1';
         heroOverlayBrand.style.transform = `translate3d(${translateX}px, ${translateY}px, 0) scale(${uniformScale})`;
 
+        // Dynamically slide the mascot logo mark next to the morphed text
+        const logoImg = navLogo?.querySelector?.('.nav-logo-image');
+        if (logoImg && mascotInitialLeft !== null && mascotWidth !== null) {
+            const finalSlideX = targetMascotLeft - mascotInitialLeft;
+            const slideX = finalSlideX * progress;
+            logoImg.style.transform = `translate3d(${slideX}px, 0, 0)`;
+        }
+
         // When we're essentially at the top, let CSS control positioning (avoids any jitter).
         if (progress < 0.001) {
             heroOverlayBrand.classList.remove('is-morphing');
             heroOverlayBrand.style.transform = '';
             heroOverlayBrand.style.opacity = '';
+            navLogo.classList.remove('is-shifting');
+            if (navLogoText) {
+                navLogoText.style.opacity = '';
+            } else {
+                navLogo.style.opacity = '';
+                navLogo.style.pointerEvents = '';
+            }
+            if (logoImg) {
+                logoImg.style.transform = '';
+            }
             heroOverlayInitialRect = null;
             heroOverlayInitialWidth = null;
             heroOverlayInitialHeight = null;
+            mascotInitialLeft = null;
+            mascotWidth = null;
 
             // Restore to original DOM position.
             if (heroOverlayPlaceholder?.parentNode) {
@@ -201,16 +251,26 @@ document.addEventListener('DOMContentLoaded', () => {
     // Init state
     const reduceMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches;
     if (!reduceMotion && navLogo && heroOverlayBrand && heroBrandEn) {
-        navLogo.style.opacity = '0';
-        navLogo.style.pointerEvents = 'none';
+        if (navLogoText) {
+            navLogoText.style.opacity = '0';
+        } else {
+            navLogo.style.opacity = '0';
+            navLogo.style.pointerEvents = 'none';
+        }
         requestBrandMorphUpdate();
         window.addEventListener('scroll', requestBrandMorphUpdate, { passive: true });
         window.addEventListener('resize', () => {
             heroOverlayInitialRect = null;
             heroOverlayInitialWidth = null;
             heroOverlayInitialHeight = null;
+            mascotInitialLeft = null;
+            mascotWidth = null;
             heroOverlayBrand.classList.remove('is-morphing');
             heroOverlayBrand.style.transform = '';
+            const logoImg = navLogo?.querySelector?.('.nav-logo-image');
+            if (logoImg) {
+                logoImg.style.transform = '';
+            }
             requestBrandMorphUpdate();
         });
     } else if (navLogo) {

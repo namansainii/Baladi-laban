@@ -1,4 +1,4 @@
-﻿/* ---------- Full-Screen Menu Overlay ---------- */
+/* ---------- Full-Screen Menu Overlay ---------- */
 .menu-overlay {
     position: fixed;
     top: 0;
@@ -46,7 +46,7 @@
 .menu-overlay.active {
     opacity: 1;
     visibility: visible;
-    transform: translateY(0);
+    transform: none;
 }
 
 .menu-overlay-container {
@@ -118,8 +118,9 @@
 }
 
 .menu-brand-logo {
-    width: 160px;
+    width: clamp(150px, 18vw, 220px);
     height: auto;
+    filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.16));
 }
 
 /* Menu Section */
@@ -158,6 +159,25 @@
     padding: 70px 40px;
     box-shadow: 0 24px 60px rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+.salankatia-white-block::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("../images/wall-pattern.png");
+    background-repeat: repeat;
+    background-size: 860px auto;
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.salankatia-white-block > * {
+    position: relative;
+    z-index: 1;
 }
 
 .salankatia-title {
@@ -171,6 +191,7 @@
     grid-template-columns: repeat(4, 1fr);
     gap: 32px;
     width: 100%;
+    align-items: start;
 }
 
 /* Product Cards */
@@ -183,6 +204,59 @@
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     position: relative;
     user-select: none;
+    height: 100%;
+}
+
+/* Center grids that have fewer items (e.g. drinks) */
+.drinks-section .menu-grid,
+.more-items-section .menu-grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    justify-items: center;
+}
+
+/* Drinks: tighter + decorative panel (looks intentional, not AI) */
+.drinks-section .menu-grid {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 44px 28px 34px;
+    border-radius: 36px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.10), rgba(255, 255, 255, 0.04));
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 26px 70px rgba(0, 0, 0, 0.16);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+    justify-content: center;
+    gap: 30px 34px;
+}
+
+.drinks-section .menu-grid::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("../images/wall-pattern.png");
+    background-repeat: repeat;
+    background-size: 860px auto;
+    opacity: 0.10;
+    pointer-events: none;
+    mix-blend-mode: screen;
+}
+
+.drinks-section .menu-card {
+    max-width: 260px;
+}
+
+.drinks-section .menu-card-image-wrapper {
+    height: 190px;
+    margin-bottom: 16px;
+}
+
+.drinks-section .menu-card-prices {
+    max-width: 220px;
+}
+
+.drinks-section .price-pill {
+    width: 220px;
 }
 
 /* Hover and Active State Rules */
@@ -233,7 +307,7 @@
 }
 
 .menu-card-image-wrapper {
-    height: 180px;
+    height: 170px;
     width: 100%;
     display: flex;
     align-items: center;
@@ -241,12 +315,20 @@
     margin-bottom: 24px;
 }
 
+/* Slightly smaller cutouts overall */
+.menu-card-image-wrapper img {
+    max-height: 92%;
+}
+
 .menu-card-image-wrapper img {
     max-height: 100%;
     max-width: 100%;
     object-fit: contain;
+    object-position: center center;
     filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.25));
     transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    display: block;
+    margin: 0 auto;
 }
 
 .menu-card:hover .menu-card-image-wrapper img {
@@ -278,6 +360,7 @@
     gap: 12px;
     width: 100%;
     max-width: 180px;
+    margin-top: auto;
 }
 
 /* Price Pills styling */
@@ -404,6 +487,44 @@
         gap: 20px 12px;
     }
 
+    /* Keep MORE/DRINKS aligned like the other sections on mobile (2 columns). */
+    .drinks-section .menu-grid,
+    .more-items-section .menu-grid {
+        grid-template-columns: repeat(2, 1fr);
+        justify-items: stretch;
+    }
+
+    /* On very small screens, the drinks decorative panel can squeeze cards and cause clipping.
+       Make it behave like the other sections on mobile. */
+    .drinks-section .menu-grid {
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+        background: none;
+        border: none;
+        box-shadow: none;
+        backdrop-filter: none;
+        overflow: visible;
+        gap: 20px 12px;
+    }
+
+    .drinks-section .menu-grid::before {
+        display: none;
+    }
+
+    /* Remove desktop fixed widths that break 2-column mobile layout */
+    .drinks-section .menu-card {
+        max-width: none;
+    }
+
+    .drinks-section .menu-card-prices {
+        max-width: 100%;
+    }
+
+    .drinks-section .price-pill {
+        width: 100%;
+    }
+
     /* Make card content align evenly in columns */
     .menu-card {
         align-items: stretch;
@@ -415,7 +536,7 @@
     }
 
     .menu-card-image-wrapper {
-        height: 110px;
+        height: 104px;
         margin-bottom: 16px;
     }
 
@@ -470,4 +591,3 @@
         height: 40px;
     }
 }
-

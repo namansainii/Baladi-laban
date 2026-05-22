@@ -1,4 +1,4 @@
-﻿/* ---------- Navigation ---------- */
+/* ---------- Navigation ---------- */
 .navbar {
     position: fixed;
     top: 0;
@@ -27,13 +27,36 @@
 }
 
 .nav-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
     font-family: var(--font-accent);
     font-weight: 900;
     font-size: 1.5rem;
     color: var(--blue-primary);
     font-style: italic;
     text-shadow: 0 8px 22px rgba(0, 86, 210, 0.12);
-    transition: opacity 0.2s linear;
+    transition: opacity 0.2s linear, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-logo-image {
+    width: 44px;
+    height: 44px;
+    flex: 0 0 44px;
+    object-fit: contain;
+    display: block;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-logo-text {
+    display: inline-block;
+    white-space: nowrap;
+    line-height: 1;
+}
+
+/* When the hero brand starts morphing toward the nav, disable transitions during shift for direct scroll responsiveness. */
+.nav-logo.is-shifting .nav-logo-image {
+    transition: none !important;
 }
 
 .nav-left {
