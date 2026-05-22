@@ -315,6 +315,10 @@
     margin-bottom: 24px;
 }
 
+.more-items-section .menu-card-image-wrapper {
+    height: 200px; /* Make more items slightly bigger */
+}
+
 /* Slightly smaller cutouts overall */
 .menu-card-image-wrapper img {
     max-height: 92%;
@@ -538,6 +542,10 @@
     .menu-card-image-wrapper {
         height: 104px;
         margin-bottom: 16px;
+    }
+
+    .more-items-section .menu-card-image-wrapper {
+        height: 130px; /* Make more items slightly bigger on mobile */
     }
 
     .menu-card-name {
