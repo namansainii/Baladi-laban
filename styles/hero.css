@@ -82,10 +82,13 @@
 }
 
 .hero-brand-ur {
-    font-family: 'Noto Nastaliq Urdu', serif;
+    font-family: 'Noto Nastaliq Urdu', 'Noto Naskh Arabic', 'Arial Unicode MS', sans-serif;
     font-size: clamp(3.25rem, 4.8vw, 5.25rem);
-    font-weight: 600;
+    font-weight: 700;
     line-height: 1.05;
+    direction: rtl;
+    text-align: center;
+    unicode-bidi: bidi-override;
     animation: heroBrandUr 9s ease-in-out infinite;
 }
 
