@@ -315,7 +315,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             city: 'New Delhi',
             phone: '+91 7780521176',
-            hours: 'Open 2:00 PM - 1:00 AM',
+            hours: 'Open 4:00 PM - 1:00 AM',
             address: 'https://maps.app.goo.gl/UKtrvr4XetQJqkXNA'
         }
     ];
